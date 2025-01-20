@@ -1,0 +1,15 @@
+{
+  "extends": "./node_modules/gts/",
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "rules": {
+    "n/no-unsupported-features/es-syntax": [
+      "error",
+      {
+        "ignores": [],
+        "version": ">=16.0.0"
+      }
+    ]
+  }
+}

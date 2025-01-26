@@ -25,12 +25,20 @@ const choices = [
 
 (async () => {
   //1. 決定專案名稱、類型(JS/TS)
-  globals.projectname = await input({message: '輸入創建的專案名稱'});
-  globals.projecttype = await select({
-    message: '選擇使用的語言類型 ',
-    choices: choices,
-  });
-  const answer = await confirm({message: 'Continue?'});
+  globals.projectname = process.argv.includes('--vscode')
+    ? 'vscode-genFolder'
+    : await input({message: '輸入創建的專案名稱'});
+  globals.projectname =
+    globals.projectname === '' ? 'genFolder' : globals.projectname;
+  globals.projecttype =
+    ((process.env['type'] ??
+      (await select({
+        message: '選擇使用的語言類型 ',
+        choices: choices,
+      }))) as 'javascript' | 'typescript') ?? 'javascript'; // read env, then or read input, at last default as javascript
+  const answer = process.argv.includes('--vscode')
+    ? true
+    : await confirm({message: 'Continue?'});
   if (!answer) return;
   //2. 依照標籤生成項目
   await launchSequence();

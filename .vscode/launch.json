@@ -7,12 +7,24 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "啟動程式",
+      "name": "Launch Typescript Run",
       "skipFiles": ["<node_internals>/**"],
       "program": "${workspaceFolder}\\src\\index.ts",
       "outFiles": ["${workspaceFolder}/**/*.js"],
       "preLaunchTask": "tsc: 建置 - tsconfig.json",
-      "args": ["--vscode"]
+      "args": ["--vscode"],
+      "env": {"type": "typescript"}
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Javascript Run",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}\\src\\index.ts",
+      "outFiles": ["${workspaceFolder}/**/*.js"],
+      "preLaunchTask": "tsc: 建置 - tsconfig.json",
+      "args": ["--vscode"],
+      "env": {"type": "javascript"}
     }
   ]
 }

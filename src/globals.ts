@@ -1,6 +1,9 @@
 // globals variables
-const globals: Record<string, string> = {
+const globals: {
+  projectname: string;
+  projecttype: 'javascript' | 'typescript';
+} = {
   projectname: '',
-  projecttype: '',
+  projecttype: 'javascript',
 };
 export default globals;

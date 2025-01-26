@@ -10,18 +10,24 @@
   "repository": {
     "url": "https://github.com/kwangsing3/ks3-toolkit"
   },
-  "bin": "build/src/index.js",
+  "bin": {
+    "ks3": "build/src/index.js"
+  },
   "license": "Apache-2.0",
   "keywords": [],
   "scripts": {
     "lint": "gts lint",
     "clean": "gts clean",
     "compile": "tsc",
-    "fix": "gts fix"
+    "fix": "gts fix",
+    "launch": "ks3-toolkit"
   },
   "devDependencies": {
     "@types/node": "^22.7.5",
     "gts": "^6.0.2",
     "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "inquirer": "^12.3.2"
   }
 }

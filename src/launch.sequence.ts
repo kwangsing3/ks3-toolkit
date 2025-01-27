@@ -1,4 +1,3 @@
-import GTSQueue from './queue/GTS.queue';
 import NPMQueue from './queue/NPM.queue';
 import globals from './globals';
 import {join} from 'path';
@@ -34,8 +33,7 @@ generate by ks3-toolkit
           console.log(`Copy file: ${name}`);
         });
   }
-  //gts first
-  await GTSQueue();
+
   //npm
   await NPMQueue();
 };

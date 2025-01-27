@@ -2,15 +2,19 @@ import {join} from 'path';
 import globals from '../globals';
 import exec from '../Toolkit/exec.func';
 import {writeFileSync} from 'fs';
+import {WriteFile} from '../Toolkit/fileIO.mod';
 
 const steps = [
   'npm install axios@latest',
   'npm install xml2js@latest',
   'npm install --save-dev @types/xml2js',
+  'npm install iconv-lite@latest',
   'npm install mariadb@latest',
-  'npm install',
 ];
-
+const tsSteps = [
+  'npm install --save-dev typescript@latest',
+  'npm install --save-dev gts@latest',
+];
 export default async () => {
   const tarPath = join(process.cwd(), globals.projectname);
 
@@ -30,6 +34,31 @@ export default async () => {
       .finally(() => {
         console.log(`【Toolkit】: ${key}`);
       });
+  // replace default tsconifg.json
+  if (globals['projecttype'] === 'typescript') {
+    // GTS steps
+    for (const key of tsSteps)
+      await exec(key, tarPath)
+        .catch(() => {})
+        .finally(() => {
+          console.log(`【Toolkit】: ${key}`);
+        });
+    await exec('npm run gtsinit').finally(() => {
+      console.log('npm run gtsinit');
+    });
+    await WriteFile(
+      join(tarPath, 'tsconfig.json'),
+      JSON.stringify(TSconfig, null, 4),
+    ).finally(() => {
+      console.log(`witefile: ${join(tarPath, 'tsconfig.json')}`);
+    });
+  }
+  //
+  await exec('npm install', tarPath)
+    .catch(() => {})
+    .finally(() => {
+      console.log('【Toolkit】: npm install');
+    });
 };
 
 const TSpackage = {
@@ -47,6 +76,7 @@ const TSpackage = {
   keywords: [],
   scripts: {
     test: 'echo "Error: no test specified" && exit 1',
+    gtsinit: 'gts init -y',
     lint: 'gts lint',
     clean: 'gts clean',
     compile: 'tsc',
@@ -70,4 +100,14 @@ const JSpackage = {
   author: '',
   license: 'ISC',
   description: '',
+};
+const TSconfig = {
+  extends: './node_modules/gts/tsconfig-google.json',
+  compilerOptions: {
+    rootDir: '.',
+    outDir: 'build',
+    target: 'ES6',
+    module: 'NodeNext',
+  },
+  include: ['src/**/*.ts', 'test/**/*.ts'],
 };

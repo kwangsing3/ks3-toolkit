@@ -4,6 +4,8 @@
 import globals from './globals';
 import {confirm, input, select, Separator} from '@inquirer/prompts';
 import launchSequence from './launch.sequence';
+import {join} from 'path';
+import {rm} from 'fs/promises';
 const choices = [
   {
     name: 'JavaScript',
@@ -40,6 +42,12 @@ const choices = [
     ? true
     : await confirm({message: 'Continue?'});
   if (!answer) return;
+  if (process.argv.includes('--vscode'))
+    await rm(join(process.cwd(), globals.projectname), {
+      recursive: true,
+      force: true,
+    });
+  //
   //2. 依照標籤生成項目
   await launchSequence();
 })()

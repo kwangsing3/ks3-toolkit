@@ -8,8 +8,13 @@
       "error",
       {
         "ignores": [],
-        "version": ">=16.0.0"
+        "version": ">=20.0.0"
       }
     ]
+  },
+  "settings": {
+    "node": {
+      "version": ">=16.0.0"
+    }
   }
 }

@@ -6,6 +6,7 @@ import {confirm, input, select, Separator} from '@inquirer/prompts';
 import launchSequence from './launch.sequence';
 import {join} from 'path';
 import {rm} from 'fs/promises';
+
 const choices = [
   {
     name: 'JavaScript',
@@ -48,7 +49,7 @@ const choices = [
       force: true,
     });
   //
-  //2. 依照標籤生成項目
+  //2. 依照標籤設定生成項目
   await launchSequence();
 })()
   .catch(err => {

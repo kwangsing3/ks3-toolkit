@@ -1,9 +1,16 @@
 import {join} from 'path';
 import globals from '../globals';
-import exec from '../exec';
+import exec from '../Toolkit/exec.func';
 import {writeFileSync} from 'fs';
 
-const steps = ['npm install axios@latest'];
+const steps = [
+  'npm install axios@latest',
+  'npm install xml2js@latest',
+  'npm install --save-dev @types/xml2js',
+  'npm install mariadb@latest',
+  'npm install',
+];
+
 export default async () => {
   const tarPath = join(process.cwd(), globals.projectname);
 

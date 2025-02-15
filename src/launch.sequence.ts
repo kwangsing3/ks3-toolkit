@@ -18,7 +18,7 @@ generate by ks3-toolkit
   await WriteFile(join(tarPath, 'README.md'), README);
 
   //copy modulers
-  const source = join(__dirname, '../', '../', 'src', 'Toolkit');
+  const source = join(__dirname, '../', '../', 'build', 'src', 'Toolkit');
   const filenames = await readdir(source);
 
   for (const name of filenames) {

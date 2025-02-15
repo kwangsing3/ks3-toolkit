@@ -20,7 +20,10 @@
     "clean": "gts clean",
     "compile": "tsc",
     "fix": "gts fix",
-    "launch": "ks3-toolkit"
+    "launch": "ks3-toolkit",
+    "release:major": "npx changelogen@latest  --major --release",
+    "release:minor": "npx changelogen@latest  --minor --release",
+    "release:patch": "npx changelogen@latest  --patch --release"
   },
   "devDependencies": {
     "@types/node": "^22.7.5",

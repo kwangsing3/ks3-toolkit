@@ -84,6 +84,9 @@ const TSpackage = {
     prepare: 'npm.cmd run compile',
     pretest: 'npm.cmd run compile',
     posttest: 'npm.cmd run lint',
+    'release:major': 'npx changelogen@latest  --major --release',
+    'release:minor': 'npx changelogen@latest  --minor --release',
+    'release:patch': 'npx changelogen@latest  --patch --release',
   },
 };
 
@@ -95,6 +98,9 @@ const JSpackage = {
   type: 'module',
   scripts: {
     test: 'echo "Error: no test specified" && exit 1',
+    'release:major': 'npx changelogen@latest  --major --release',
+    'release:minor': 'npx changelogen@latest  --minor --release',
+    'release:patch': 'npx changelogen@latest  --patch --release',
   },
   keywords: [],
   author: '',

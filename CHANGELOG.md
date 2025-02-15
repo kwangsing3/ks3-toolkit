@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v1.1.1
+
+[compare changes](https://github.com/kwangsing3/ks3-toolkit/compare/v1.1.0...v1.1.1)
+
+### 🩹 Fixes
+
+- **CI:** 刪除NPM工作流的標籤影響 ([11c62bc](https://github.com/kwangsing3/ks3-toolkit/commit/11c62bc))
+
+### ❤️ Contributors
+
+- Kwangsing3 ([@kwangsing3](http://github.com/kwangsing3))
+
 ## v1.1.0
 
 

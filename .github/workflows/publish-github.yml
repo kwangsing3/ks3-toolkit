@@ -22,6 +22,10 @@ jobs:
           node-version: '20'
           registry-url: 'https://npm.pkg.github.com'
 
+      - name: Remove publishConfig from package.json
+        run: |
+          jq 'del(.publishConfig)' package.json > temp.json && mv temp.json package.json
+
       - name: Install dependencies
         run: npm install
 

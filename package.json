@@ -5,7 +5,8 @@
   "main": "build/src/index.js",
   "types": "build/src/index.d.ts",
   "files": [
-    "build/src"
+    "build/src",
+    "src"
   ],
   "repository": {
     "url": "https://github.com/kwangsing3/ks3-toolkit.git"

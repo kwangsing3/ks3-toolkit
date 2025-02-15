@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v1.1.3
+
+[compare changes](https://github.com/kwangsing3/ks3-toolkit/compare/v1.1.2...v1.1.3)
+
+### 🩹 Fixes
+
+- **CI:** Fix npm workflow ([cb0f7ad](https://github.com/kwangsing3/ks3-toolkit/commit/cb0f7ad))
+
+### ❤️ Contributors
+
+- Kwangsing3 ([@kwangsing3](http://github.com/kwangsing3))
+
 ## v1.1.2
 
 [compare changes](https://github.com/kwangsing3/ks3-toolkit/compare/v1.1.1...v1.1.2)

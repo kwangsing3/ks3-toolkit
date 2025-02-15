@@ -1,6 +1,31 @@
 # Changelog
 
 
+## v1.1.0
+
+
+### 🚀 Enhancements
+
+- **argv:** 建立輸入專案名稱及選擇標籤的功能。 ([ef0dafc](https://github.com/kwangsing3/ks3-toolkit/commit/ef0dafc))
+- **cli:** 建立toolkit-exec介面。 ([457aed3](https://github.com/kwangsing3/ks3-toolkit/commit/457aed3))
+- **npm:** 完成專案的初始化流程腳本，僅需填充toolkit內容 ([058c3d9](https://github.com/kwangsing3/ks3-toolkit/commit/058c3d9))
+- **toolkit:** 添加toolkit package ([1ca1c2e](https://github.com/kwangsing3/ks3-toolkit/commit/1ca1c2e))
+- **action:** 新增發佈工作流，以推送到Npm、github package、release。 package.json 新增開發輸出流 ([678d72f](https://github.com/kwangsing3/ks3-toolkit/commit/678d72f))
+
+### 🩹 Fixes
+
+- 修正當環境沒有全域GTS或TSC功能時導致的流程錯誤問題。 ([7b16943](https://github.com/kwangsing3/ks3-toolkit/commit/7b16943))
+
+### 🏡 Chore
+
+- 修改專案描述 ([1baf4e1](https://github.com/kwangsing3/ks3-toolkit/commit/1baf4e1))
+- Update launch.json ([02e6f4b](https://github.com/kwangsing3/ks3-toolkit/commit/02e6f4b))
+
+### ❤️ Contributors
+
+- Kwangsing3 ([@kwangsing3](http://github.com/kwangsing3))
+- Jon_Chiu ([@kwangsing3](http://github.com/kwangsing3))
+
 ## v2.0.0
 
 

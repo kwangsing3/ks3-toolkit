@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v1.1.2
+
+[compare changes](https://github.com/kwangsing3/ks3-toolkit/compare/v1.1.1...v1.1.2)
+
+### 🩹 Fixes
+
+- **CI:** Fix workflow ([82ecd8a](https://github.com/kwangsing3/ks3-toolkit/commit/82ecd8a))
+
+### ❤️ Contributors
+
+- Kwangsing3 ([@kwangsing3](http://github.com/kwangsing3))
+
 ## v1.1.1
 
 [compare changes](https://github.com/kwangsing3/ks3-toolkit/compare/v1.1.0...v1.1.1)

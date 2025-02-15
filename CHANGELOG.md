@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v1.1.5
+
+[compare changes](https://github.com/kwangsing3/ks3-toolkit/compare/v1.1.4...v1.1.5)
+
+### 🩹 Fixes
+
+- **pkg:** 修改bin呼叫指令 ([97e5123](https://github.com/kwangsing3/ks3-toolkit/commit/97e5123))
+
+### ❤️ Contributors
+
+- Kwangsing3 ([@kwangsing3](http://github.com/kwangsing3))
+
 ## v1.1.4
 
 [compare changes](https://github.com/kwangsing3/ks3-toolkit/compare/v1.1.3...v1.1.4)

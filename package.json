@@ -11,7 +11,7 @@
     "url": "https://github.com/kwangsing3/ks3-toolkit.git"
   },
   "bin": {
-    "ks3": "build/src/index.js"
+    "ks3-toolkit": "build/src/index.js"
   },
   "license": "Apache-2.0",
   "keywords": [],

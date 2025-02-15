@@ -18,6 +18,12 @@ jobs:
         with:
           node-version: '20'
           registry-url: 'https://registry.npmjs.org/'
+      - name: Remove publishConfig from package.json
+        run: |
+          jq 'del(.publishConfig)' package.json > temp.json && mv temp.json package.json
+
+      - name: remove .npmrc
+        run: rm -f .npmrc
 
       - name: Install dependencies
         run: npm install

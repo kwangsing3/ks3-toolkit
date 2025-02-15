@@ -21,6 +21,9 @@ jobs:
       - name: Remove publishConfig from package.json
         run: |
           jq 'del(.publishConfig)' package.json > temp.json && mv temp.json package.json
+      - name: Update package.json name
+        run: |
+          jq '.name = "${{ github.repository }}"' package.json > temp.json && mv temp.json package.json
 
       - name: remove .npmrc
         run: rm -f .npmrc

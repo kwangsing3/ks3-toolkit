@@ -18,9 +18,8 @@ generate by ks3-toolkit
   await WriteFile(join(tarPath, 'README.md'), README);
 
   //copy modulers
-  const source = join(__dirname, '../', '../', 'src', 'Toolkit');
-  const filenames = await readdir(source);
-
+  let source = join(__dirname, '../', '../', 'src', 'Toolkit');
+  let filenames = await readdir(source);
   for (const name of filenames) {
     // js declare file: 具體邏輯是.d.的檔案會在js時才保送過去，其餘模式過濾
     if (
@@ -36,6 +35,18 @@ generate by ks3-toolkit
 
   //npm
   await NPMQueue();
+  //
+  //
+  //base setting
+  source = join(__dirname, '../', '../', 'src', 'data');
+  filenames = await readdir(source);
+  for (const name of filenames) {
+    await cp(join(source, name), join(tarPath, name))
+      .catch(() => {})
+      .finally(() => {
+        console.log(`Copy file: ${name}`);
+      });
+  }
 };
 
 const helloworld = `${

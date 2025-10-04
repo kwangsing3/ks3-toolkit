@@ -1,5 +1,17 @@
 # Changelog
 
+## v2.1.0
+
+[compare changes](https://github.com/kwangsing3/ks3-toolkit/compare/v1.2.0...v2.1.0)
+
+### 🏡 Chore
+
+- **release:** V2.0.0 ([d9df6f8](https://github.com/kwangsing3/ks3-toolkit/commit/d9df6f8))
+
+### ❤️ Contributors
+
+- Kwangsing3 ([@kwangsing3](https://github.com/kwangsing3))
+
 ## v2.0.0
 
 [compare changes](https://github.com/kwangsing3/ks3-toolkit/compare/v1.2.0...v2.0.0)

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import * as xml2js from 'xml2js';
+import * as xml2js from "xml2js";
 
 /**
  * 將檔案分析成物件(Object)

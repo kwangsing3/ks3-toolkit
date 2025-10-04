@@ -1,5 +1,5 @@
-import {mkdir, readdir, readFile, writeFile, rm} from 'fs/promises';
-import {join, dirname} from 'path';
+import { mkdir, readdir, readFile, writeFile, rm } from "fs/promises";
+import { join, dirname } from "path";
 
 /** 寫入檔案，並自動檢查是否有相應的資料夾位置
  * @function
@@ -10,7 +10,7 @@ export async function WriteFile(targetPath, content) {
   const parentPath = dirname(targetPath);
   await MKDir(parentPath);
   targetPath = join(targetPath);
-  await writeFile(targetPath, content, 'utf-8');
+  await writeFile(targetPath, content, "utf-8");
 }
 
 /** 讀取檔案
@@ -18,7 +18,7 @@ export async function WriteFile(targetPath, content) {
  * @returns Buffer-成功  {}-失敗
  */
 export async function ReadFile(targetPath) {
-  return await readFile(targetPath, 'utf8');
+  return await readFile(targetPath, "utf8");
 }
 
 /**
@@ -27,9 +27,9 @@ export async function ReadFile(targetPath) {
  * @function
  */
 export async function MKDir(tarPath) {
-  if (tarPath === '') return;
+  if (tarPath === "") return;
   tarPath = join(tarPath);
-  await mkdir(tarPath, {recursive: true});
+  await mkdir(tarPath, { recursive: true });
 }
 
 /**
@@ -48,13 +48,13 @@ export async function GetFilesOrFoldersName(dirPath, type, recursive = false) {
         recursive: recursive,
       })
     )
-      .filter(dirent =>
-        type === 'file' ? dirent.isFile() : dirent.isDirectory(),
+      .filter((dirent) =>
+        type === "file" ? dirent.isFile() : dirent.isDirectory(),
       )
-      .map(dirent => dirent.name);
+      .map((dirent) => dirent.name);
     return files;
   } catch (err) {
-    console.error('Error reading names:', err);
+    console.error("Error reading names:", err);
     return [];
   }
 }
@@ -64,7 +64,7 @@ export async function GetFilesOrFoldersName(dirPath, type, recursive = false) {
  * @param path 檔案位置
  */
 export async function DeleteFile(path) {
-  await rm(path).catch(err => {
+  await rm(path).catch((err) => {
     console.error(err);
   });
 }

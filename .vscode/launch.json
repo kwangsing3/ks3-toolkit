@@ -7,24 +7,32 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch Typescript Run",
-      "skipFiles": ["<node_internals>/**"],
+      "name": "Launch Program",
+      "runtimeArgs": [
+        "--experimental-strip-types"
+      ],
+      "args": [
+        "--vscode"
+      ],
       "program": "${workspaceFolder}/src/index.ts",
-      "outFiles": ["${workspaceFolder}/**/*.js"],
-      "preLaunchTask": "tsc: 建置 - tsconfig.json",
-      "args": ["--vscode"],
-      "env": {"type": "typescript"}
+      "env": {
+        "type": "typescript"
+      },
     },
     {
       "type": "node",
       "request": "launch",
       "name": "Launch Javascript Run",
-      "skipFiles": ["<node_internals>/**"],
       "program": "${workspaceFolder}/src/index.ts",
-      "outFiles": ["${workspaceFolder}/**/*.js"],
-      "preLaunchTask": "tsc: 建置 - tsconfig.json",
-      "args": ["--vscode"],
-      "env": {"type": "javascript"}
+      "runtimeArgs": [
+        "--experimental-strip-types"
+      ],
+      "args": [
+        "--vscode"
+      ],
+      "env": {
+        "type": "javascript"
+      },
     }
   ]
 }

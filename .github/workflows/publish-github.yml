@@ -3,7 +3,7 @@ name: Publish to GitHub Packages
 on:
   push:
     tags:
-      - 'v*.*.*'
+      - "v*.*.*"
 
 jobs:
   publish:
@@ -19,8 +19,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          registry-url: 'https://npm.pkg.github.com'
+          node-version: "20"
+          registry-url: "https://npm.pkg.github.com"
       - name: Install dependencies
         run: npm install
 

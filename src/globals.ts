@@ -1,9 +1,9 @@
 // globals variables
 const globals: {
   projectname: string;
-  projecttype: 'javascript' | 'typescript';
+  projecttype: "javascript" | "typescript";
 } = {
-  projectname: '',
-  projecttype: 'javascript',
+  projectname: "",
+  projecttype: "javascript",
 };
 export default globals;

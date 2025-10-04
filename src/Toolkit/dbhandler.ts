@@ -1,4 +1,4 @@
-import * as mariadb from 'mariadb';
+import * as mariadb from "mariadb";
 
 let pool: mariadb.Pool;
 
@@ -39,7 +39,7 @@ export async function GetContent(query: string) {
   if (conn) {
     await conn.end();
   } else {
-    throw new Error('DataBase 連接錯誤');
+    throw new Error("DataBase 連接錯誤");
   }
   const data = await conn.query(query);
   return data;
@@ -62,14 +62,14 @@ export async function CloseConnect() {
  * @param tableName
  */
 export async function CreateTable(
-  struct: {name: string; type: string}[],
+  struct: { name: string; type: string }[],
   database: string,
   tableName: string,
 ) {
-  let volume = '';
+  let volume = "";
   for (let index = 0; index < struct.length; index++) {
-    volume += ` ${struct[index].name} ${struct[index].type}${
-      index === struct.length - 1 ? '' : ','
+    volume += ` ${struct[index]!.name} ${struct[index]!.type}${
+      index === struct.length - 1 ? "" : ","
     }
     `;
   }
@@ -105,30 +105,30 @@ export async function Upsert(
 ) {
   const keylist = Object.keys(content);
   const valuelist = Object.values(content);
-  let strkey = '';
-  let value = '';
+  let strkey = "";
+  let value = "";
   for (let index = 0; index < valuelist.length; index++) {
     6;
     const ele = valuelist[index];
     value +=
-      typeof ele === 'string'
+      typeof ele === "string"
         ? `${JSON.stringify(ele)}`
         : `${JSON.stringify(ele?.toString())}`;
     strkey += keylist[index];
     if (index !== valuelist.length - 1) {
-      value += ',\n';
-      strkey += ',\n';
+      value += ",\n";
+      strkey += ",\n";
     }
   }
-  let update = '';
+  let update = "";
   for (let index = 0; index < keylist.length; index++) {
     const ele = valuelist[index];
     const tt =
-      typeof ele === 'string'
+      typeof ele === "string"
         ? `${JSON.stringify(ele)}`
         : `${JSON.stringify(ele?.toString())}`;
-    update += `${keylist[index]}` + '=' + tt;
-    if (index !== keylist.length - 1) update += ',\n';
+    update += `${keylist[index]}` + "=" + tt;
+    if (index !== keylist.length - 1) update += ",\n";
   }
   //
   const query = `
@@ -158,11 +158,11 @@ export async function Insert(
   tableName: string,
 ) {
   const keylist = Object.keys(content);
-  let value = '';
+  let value = "";
   for (let index = 0; index < keylist.length; index++) {
     const ele = keylist[index];
-    value += typeof ele === 'string' ? `"${ele}"` : `${ele}`;
-    if (index !== keylist.length - 1) value += ',\n';
+    value += typeof ele === "string" ? `"${ele}"` : `${ele}`;
+    if (index !== keylist.length - 1) value += ",\n";
   }
   const query = `
   INSERT INTO ${database}.${tableName}

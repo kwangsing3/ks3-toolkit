@@ -14,5 +14,5 @@ declare global {
   }
 }
 Date.prototype.convertToDateTime = function (): string {
-  return this.toISOString().slice(0, 19).replace('T', ' ');
+  return this.toISOString().slice(0, 19).replace("T", " ");
 };

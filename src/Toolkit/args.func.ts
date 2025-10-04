@@ -14,10 +14,10 @@
  */
 export function GetArgs() {
   const args: Record<string, string> = {};
-  process.argv.slice(2).map(element => {
-    const matches = element.match('--([a-zA-Z0-9]+)=(.*)');
+  process.argv.slice(2).map((element) => {
+    const matches = element.match("--([a-zA-Z0-9]+)=(.*)");
     if (matches) {
-      args[matches[1]] = matches[2].replace(/^['"]/, '').replace(/['"]$/, '');
+      args[matches[1]!] = matches[2]!.replace(/^['"]/, "").replace(/['"]$/, "");
     }
   });
   return args;

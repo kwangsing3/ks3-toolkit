@@ -1,9 +1,9 @@
 import axios, {
   AxiosError,
-  AxiosRequestConfig,
-  AxiosResponseHeaders,
-  RawAxiosResponseHeaders,
-} from 'axios';
+  type AxiosRequestConfig,
+  type AxiosResponseHeaders,
+  type RawAxiosResponseHeaders,
+} from "axios";
 /**
  * 統一回覆格式
  */
@@ -23,14 +23,14 @@ type Result<T> = {
  */
 export async function GET<T>(
   url: string,
-  headers?: {[x: string]: string},
+  headers?: { [x: string]: string },
   timeout?: number,
   maxRedirects?: number,
 ): Promise<Result<T>> {
   const config: AxiosRequestConfig = {
-    method: 'get',
+    method: "get",
     url: url,
-    headers: headers,
+    headers: headers ?? {},
     timeout: timeout ?? 15000,
   };
   //code 3xx 在一般情況下歸納成錯誤處理，這裡直接歸納回來
@@ -64,13 +64,13 @@ export async function GET<T>(
  */
 export async function POST<T>(
   url: string,
-  header: {[x: string]: string},
-  content: {[x: string]: string} | string,
+  header: { [x: string]: string },
+  content: { [x: string]: string } | string,
   timeout?: number,
   maxRedirects?: number,
 ): Promise<Result<T>> {
   const config: AxiosRequestConfig = {
-    method: 'post',
+    method: "post",
     url: url,
     data: content,
     headers: header,
@@ -103,7 +103,7 @@ export async function POST<T>(
   依照速率阻塞線程。
 */
 export function Sleep(ms: number): Promise<unknown> {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     setTimeout(resolve, ms);
   });
 }
@@ -128,9 +128,9 @@ function HandleAxiosError(error: AxiosError) {
     console.error(`❌ 請求失敗： ${error.config?.url}
       狀態碼: ${error.response.status}
       訊息: ${error.response.statusText}
-      資料: ${error.response.status === 404 ? '' : JSON.stringify(error.response.data)}`);
+      資料: ${error.response.status === 404 ? "" : JSON.stringify(error.response.data)}`);
   } else if (error.request) {
-    console.error('❌ 請求已發送，但未收到回應。'); // 沒有收到回應
+    console.error("❌ 請求已發送，但未收到回應。"); // 沒有收到回應
   } else {
     console.error(`❌ 發生錯誤: ${error.message}`); // 發送請求時發生的其他錯誤
   }
@@ -138,7 +138,7 @@ function HandleAxiosError(error: AxiosError) {
     success: false,
     data: null,
     status: error.response?.status || 0,
-    statusText: error.response?.statusText || 'Unknown Error',
+    statusText: error.response?.statusText || "Unknown Error",
     headers: error.response?.headers || {},
     config: error.config as AxiosRequestConfig, // 確保這裡的 config 是 AxiosRequestConfig 類型
   };

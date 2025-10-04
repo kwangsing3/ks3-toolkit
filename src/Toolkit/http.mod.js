@@ -4,7 +4,7 @@ import axios, {
   AxiosRequestConfig,
   AxiosResponseHeaders,
   RawAxiosResponseHeaders,
-} from 'axios';
+} from "axios";
 
 /**
  * @template T
@@ -27,7 +27,7 @@ import axios, {
  */
 export async function GET(url, headers, timeout = 15000, maxRedirects) {
   const config = {
-    method: 'get',
+    method: "get",
     url: url,
     headers: headers,
     timeout: timeout,
@@ -73,7 +73,7 @@ export async function POST(
   maxRedirects,
 ) {
   const config = {
-    method: 'post',
+    method: "post",
     url: url,
     data: content,
     headers: header,
@@ -106,7 +106,7 @@ export async function POST(
   依照速率阻塞線程。
 */
 export function Sleep(ms) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     setTimeout(resolve, ms);
   });
 }
@@ -114,7 +114,7 @@ export function Sleep(ms) {
 let waitRateMS = 0;
 let cache = new Date();
 // 一分鐘可接受次數
-export const SetRatePerMin = ms => {
+export const SetRatePerMin = (ms) => {
   waitRateMS = 60000 / ms;
 };
 
@@ -137,7 +137,7 @@ function HandleAxiosError(error) {
       訊息: ${error.response.statusText}
       資料: ${JSON.stringify(error.response.data)}`);
   } else if (error.request) {
-    console.error('❌ 請求已發送，但未收到回應。'); // 沒有收到回應
+    console.error("❌ 請求已發送，但未收到回應。"); // 沒有收到回應
   } else {
     console.error(`❌ 發生錯誤: ${error.message}`); // 發送請求時發生的其他錯誤
   }
@@ -145,7 +145,7 @@ function HandleAxiosError(error) {
     success: false,
     data: null,
     status: error.response.status || 0,
-    statusText: error.response.statusText || 'Unknown Error',
+    statusText: error.response.statusText || "Unknown Error",
     headers: error.response.headers || {},
     config: error.config, // 確保這裡的 config 是 AxiosRequestConfig 類型
   };

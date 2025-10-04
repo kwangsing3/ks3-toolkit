@@ -1,6 +1,5 @@
 # Changelog
 
-
 ## v1.2.0
 
 [compare changes](https://github.com/kwangsing3/ks3-toolkit/compare/v1.1.8...v1.2.0)
@@ -44,4 +43,3 @@
 ### ❤️ Contributors
 
 - Kwangsing3 ([@kwangsing3](http://github.com/kwangsing3))
-

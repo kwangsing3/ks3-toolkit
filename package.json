@@ -2,17 +2,15 @@
   "name": "@kwangsing3/ks3-toolkit",
   "version": "2.1.2",
   "description": "Node.js 開發專案生成工具-具備基礎的資料庫、I/O、時間轉換、http method等包裝好的函式。無須安裝僅在開新專案時呼叫即可。",
-  "main": "build/src/index.js",
-  "types": "build/src/index.d.ts",
+  "main": "src/index.ts",
   "files": [
-    "build/src",
     "src"
   ],
   "repository": {
     "url": "https://github.com/kwangsing3/ks3-toolkit.git"
   },
   "bin": {
-    "ks3-toolkit": "build/src/index.js"
+    "ks3-toolkit": "src/index.ts"
   },
   "license": "Apache-2.0",
   "keywords": [],

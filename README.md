@@ -13,7 +13,7 @@ Github Package:
 # Usage
 
 ```bash
-npx kwangsing3/ks3-toolkit
+npx ks3-toolkit
 ```
 
 ```
@@ -39,6 +39,32 @@ package.json
 ### 修改項目
 
 - 較多為後續的重構或因版本變化的更新需求而修改。
+
+# 值得注意的事項
+
+- Typescript 有其相對於 Javascript 獨特的定位，在同時被不同的領域(網頁、框架、伺服器)使用時，其所需要符合的架構規範 (ESM)
+  tsconfig.json 常有非常詭異設定方式。
+
+所以此專案使用的概念是:
+
+1. 不需要 tsc 編譯成.js 也能執行，這點包括 npx ，能夠使用 node 直接運行。
+2. 當需要編譯出.js 時，註解 tsconfig.json 的內容
+
+```json
+...
+   "noUncheckedSideEffectImports": true,
+    "moduleDetection": "force",
+    "skipLibCheck": true,
+    //"allowImportingTsExtensions": true,
+    //"noEmit": true,
+    "moduleResolution": "NodeNext",
+    "forceConsistentCasingInFileNames": true
+...
+```
+
+不過在編譯後，原.ts 檔內的引用的項目需要轉換成.js，想當然整段執行過程 vsCode 都會是引用不到檔案的。
+
+3. 此專案這樣設定的優點是在開發階段都不再需要等檔案編譯完就能直接執行，斷點也是能正常生效的。
 
 ##
 

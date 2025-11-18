@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.1.2
+
+[compare changes](https://github.com/kwangsing3/ks3-toolkit/compare/v2.1.1...v2.1.2)
+
 ## v2.1.1
 
 [compare changes](https://github.com/kwangsing3/ks3-toolkit/compare/v1.2.0...v2.1.1)

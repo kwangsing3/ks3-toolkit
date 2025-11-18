@@ -1,5 +1,21 @@
 # Changelog
 
+## v2.1.2
+
+[compare changes](https://github.com/kwangsing3/ks3-toolkit/compare/v2.2.4...v2.1.2)
+
+### 🩹 Fixes
+
+- 修復include路徑問題 ([13b79fe](https://github.com/kwangsing3/ks3-toolkit/commit/13b79fe))
+
+### 🤖 CI
+
+- Edit yml steps ([627bd8d](https://github.com/kwangsing3/ks3-toolkit/commit/627bd8d))
+
+### ❤️ Contributors
+
+- Jon_Chiu <Jon_Chiu@genesis.com.tw>
+
 ## v2.2.4
 
 [compare changes](https://github.com/kwangsing3/ks3-toolkit/compare/v2.2.3...v2.2.4)

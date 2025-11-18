@@ -1,6 +1,6 @@
 {
   "name": "@kwangsing3/ks3-toolkit",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Node.js 開發專案生成工具-具備基礎的資料庫、I/O、時間轉換、http method等包裝好的函式。無須安裝僅在開新專案時呼叫即可。",
   "main": "src/index.ts",
   "files": [

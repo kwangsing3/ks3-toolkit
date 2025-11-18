@@ -1,5 +1,17 @@
 # Changelog
 
+## v2.2.4
+
+[compare changes](https://github.com/kwangsing3/ks3-toolkit/compare/v2.2.3...v2.2.4)
+
+### 🩹 Fixes
+
+- Fix include issue ([b6828a2](https://github.com/kwangsing3/ks3-toolkit/commit/b6828a2))
+
+### ❤️ Contributors
+
+- Jon_Chiu <Jon_Chiu@genesis.com.tw>
+
 ## v2.2.3
 
 [compare changes](https://github.com/kwangsing3/ks3-toolkit/compare/v2.2.2...v2.2.3)

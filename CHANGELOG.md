@@ -1,5 +1,17 @@
 # Changelog
 
+## v2.2.3
+
+[compare changes](https://github.com/kwangsing3/ks3-toolkit/compare/v2.2.2...v2.2.3)
+
+### 🩹 Fixes
+
+- 修復路徑問題 ([83728ab](https://github.com/kwangsing3/ks3-toolkit/commit/83728ab))
+
+### ❤️ Contributors
+
+- Jon_Chiu <Jon_Chiu@genesis.com.tw>
+
 ## v2.2.2
 
 [compare changes](https://github.com/kwangsing3/ks3-toolkit/compare/v2.2.1...v2.2.2)

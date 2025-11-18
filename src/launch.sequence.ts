@@ -2,9 +2,9 @@ import { join } from "path";
 import { cp, readdir } from "fs/promises";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
-import globals from "./globals.ts";
-import { MKDir, WriteFile } from "./Toolkit/fileIO.mod.ts";
-import NPMQueue from "./queue/NPM.queue.ts";
+import globals from "./globals.js";
+import { MKDir, WriteFile } from "./Toolkit/fileIO.mod.js";
+import NPMQueue from "./queue/NPM.queue.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

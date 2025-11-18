@@ -1,8 +1,8 @@
 import { join } from "path";
-import exec from "../Toolkit/exec.func.ts";
+import exec from "../Toolkit/exec.func.js";
 import { writeFileSync } from "fs";
-import { WriteFile } from "../Toolkit/fileIO.mod.ts";
-import globals from "../globals.ts";
+import { WriteFile } from "../Toolkit/fileIO.mod.js";
+import globals from "../globals.js";
 
 const steps = [
   "npm install axios@latest",
@@ -108,11 +108,9 @@ const TSconfig = {
   compilerOptions: {
     // File Layout
     // "rootDir": "./src",
-    outDir: "./build",
+    // outDir: "./build",
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
-    module: "NodeNext",
-    target: "esnext",
     types: [],
     // For nodejs:
     // "lib": ["esnext"],
@@ -134,15 +132,13 @@ const TSconfig = {
     // "noPropertyAccessFromIndexSignature": true,
     // Recommended Options
     strict: true,
-    jsx: "react-jsx",
     verbatimModuleSyntax: true,
     isolatedModules: true,
     noUncheckedSideEffectImports: true,
     moduleDetection: "force",
     skipLibCheck: true,
-    // allowImportingTsExtensions: true,
-    // noEmit: true,
-    moduleResolution: "NodeNext",
+    allowImportingTsExtensions: true,
+    noEmit: true,
     forceConsistentCasingInFileNames: true,
   },
 };

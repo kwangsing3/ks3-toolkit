@@ -18,6 +18,7 @@
       "env": {
         "type": "typescript"
       },
+      "preLaunchTask": "tsc: 建置 - tsconfig.json"
     },
     {
       "type": "node",
@@ -33,6 +34,7 @@
       "env": {
         "type": "javascript"
       },
+      "preLaunchTask": "tsc: 建置 - tsconfig.json"
     }
   ]
 }

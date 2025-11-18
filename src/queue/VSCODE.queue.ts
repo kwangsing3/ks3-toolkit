@@ -1,1 +1,41 @@
 export default () => {};
+/*
+{
+  // 使用 IntelliSense 以得知可用的屬性。
+  // 暫留以檢視現有屬性的描述。
+  // 如需詳細資訊，請瀏覽: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Program",
+      "runtimeArgs": [
+        "--experimental-strip-types"
+      ],
+      "args": [
+        "--vscode"
+      ],
+      "program": "${workspaceFolder}/src/index.ts",
+      "env": {
+        "type": "typescript"
+      },
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Javascript Run",
+      "program": "${workspaceFolder}/src/index.ts",
+      "runtimeArgs": [
+        "--experimental-strip-types"
+      ],
+      "args": [
+        "--vscode"
+      ],
+      "env": {
+        "type": "javascript"
+      },
+    }
+  ]
+}
+*/

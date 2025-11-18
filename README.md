@@ -57,7 +57,6 @@ package.json
     "skipLibCheck": true,
     //"allowImportingTsExtensions": true,
     //"noEmit": true,
-    "moduleResolution": "NodeNext",
     "forceConsistentCasingInFileNames": true
 ...
 ```
@@ -65,6 +64,15 @@ package.json
 不過在編譯後，原.ts 檔內的引用的項目需要轉換成.js，想當然整段執行過程 vsCode 都會是引用不到檔案的。
 
 3. 此專案這樣設定的優點是在開發階段都不再需要等檔案編譯完就能直接執行，斷點也是能正常生效的。
+
+## 所以一開始就要決定好自己的專案是否需要編譯成 JS
+
+因為此專案需要上傳到 NPM，所以還是需要特別編譯過 (本身作為 node_modules 的應用方式不支援直接執行.ts)。
+
+- 此專案需要編譯成 JS
+- 用此專案生成出來的專案不需要編譯成 JS 就能執行
+
+所以兩邊的 tsconfig.json 不同，但可以各自取用想要的項目。
 
 ##
 

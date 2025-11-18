@@ -4,8 +4,8 @@
 import { confirm, input, select, Separator } from "@inquirer/prompts";
 import { join } from "path";
 import { rm } from "fs/promises";
-import globals from "./globals.ts";
-import launchSequence from "./launch.sequence.ts";
+import globals from "./globals.js";
+import launchSequence from "./launch.sequence.js";
 
 const choices = [
   {

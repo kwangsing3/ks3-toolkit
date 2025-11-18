@@ -1,8 +1,8 @@
 # ks3-toolkit
 
-Node.js 開發專案生成工具-具備基礎的資料庫、I/O、時間轉換、http method等包裝好的函示。無須安裝，需要開新專案時呼叫即可。
+Node.js 開發專案生成工具-具備基礎的資料庫、I/O、時間轉換、http method 等包裝好的函示。無須安裝，需要開新專案時呼叫即可。
 
-依照開發語言主體JS/TS各自引用不同的程式碼檔案。
+依照開發語言主體 JS/TS 各自引用不同的程式碼檔案。
 
 NPM:
 [ks3-toolkit (www.npmjs.com)](https://www.npmjs.com/package/ks3-toolkit)
@@ -13,7 +13,7 @@ Github Package:
 # Usage
 
 ```bash
-npx ks3-toolkit
+npx kwangsing3/ks3-toolkit
 ```
 
 ```
@@ -50,4 +50,4 @@ npm install
 
 # Version
 
-- 版本藉由帶tag的提交進行工作流發佈。
+- 版本藉由帶 tag 的提交進行工作流發佈。

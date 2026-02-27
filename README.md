@@ -100,6 +100,7 @@ npm install
         "strict": true,
         "esModuleInterop": true,
         "skipLibCheck": true,
+        "sourceMap": true,
         "forceConsistentCasingInFileNames": true
     },
     "include": [

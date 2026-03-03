@@ -36,13 +36,15 @@ export function ConnectToDB(
  */
 export async function GetContent(query: string) {
   const conn = await pool.getConnection();
-  if (conn) {
-    await conn.end();
-  } else {
+  if (!conn) {
     throw new Error("DataBase 連接錯誤");
   }
-  const data = await conn.query(query);
-  return data;
+  try {
+    const data = await conn.query(query);
+    return data;
+  } finally {
+    await conn.end();
+  }
 }
 
 /**
@@ -57,46 +59,37 @@ export async function CloseConnect() {
 
 /**
  * 建立table表單，需要在input.name指定PRIMARY KEY (全大寫為主鍵)
- * @param struct
- * @param database
- * @param tableName
+ * @param struct 表單結構，包含name和type
+ * @param database 資料庫名稱
+ * @param tableName 表單名稱
  */
 export async function CreateTable(
   struct: { name: string; type: string }[],
   database: string,
   tableName: string,
 ) {
-  let volume = "";
-  for (let index = 0; index < struct.length; index++) {
-    volume += ` ${struct[index]!.name} ${struct[index]!.type}${
-      index === struct.length - 1 ? "" : ","
-    }
-    `;
-  }
+  const columns = struct
+    .map((col) => `\`${col.name}\` ${col.type}`)
+    .join(",\n    ");
+
   const query = `
-  CREATE TABLE IF NOT EXISTS ${database}.${tableName} 
+  CREATE TABLE IF NOT EXISTS \`${database}\`.\`${tableName}\` 
   (
-    ${volume}
-  ) CHARACTER SET utf8 COLLATE utf8_general_ci;
+    ${columns}
+  ) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
   `;
   await GetContent(query);
 }
 /**
  * 依照傳入的內容[key,value]，轉換並覆寫到對應的DB表單。(主鍵判斷依表單為主)
- * @param {JSON} content 插入內容
- * @param {string} database 資料庫名稱
- * @param {string} tableName 表單名稱
+ * 如果沒有則插入，依照主key為索引更新資料表
+ * @param content 插入內容
+ * @param database 資料庫名稱
+ * @param tableName 表單名稱
  * @example
- * ```javascript
+ * ```typescript
  * await Upsert(context, 'database', 'tablename');
  * ```
- */
-
-/**
- * 如果沒有則插入，依照主key為索引更新資料表。  如果結構與表不同(無論增減)，則報錯。
- * @param content
- * @param database
- * @param tableName
  */
 export async function Upsert(
   content: JSON,
@@ -105,39 +98,35 @@ export async function Upsert(
 ) {
   const keylist = Object.keys(content);
   const valuelist = Object.values(content);
-  let strkey = "";
-  let value = "";
-  for (let index = 0; index < valuelist.length; index++) {
-    6;
-    const ele = valuelist[index];
-    value +=
+
+  const values = valuelist
+    .map((ele) =>
       typeof ele === "string"
-        ? `${JSON.stringify(ele)}`
-        : `${JSON.stringify(ele?.toString())}`;
-    strkey += keylist[index];
-    if (index !== valuelist.length - 1) {
-      value += ",\n";
-      strkey += ",\n";
-    }
-  }
-  let update = "";
-  for (let index = 0; index < keylist.length; index++) {
-    const ele = valuelist[index];
-    const tt =
-      typeof ele === "string"
-        ? `${JSON.stringify(ele)}`
-        : `${JSON.stringify(ele?.toString())}`;
-    update += `${keylist[index]}` + "=" + tt;
-    if (index !== keylist.length - 1) update += ",\n";
-  }
-  //
+        ? JSON.stringify(ele)
+        : JSON.stringify(ele?.toString()),
+    )
+    .join(",\n      ");
+
+  const columnNames = keylist.map((k) => `\`${k}\``).join(",\n    ");
+
+  const updateClauses = keylist
+    .map((key, index) => {
+      const ele = valuelist[index];
+      const val =
+        typeof ele === "string"
+          ? JSON.stringify(ele)
+          : JSON.stringify(ele?.toString());
+      return `\`${key}\`=${val}`;
+    })
+    .join(",\n      ");
+
   const query = `
-  INSERT INTO ${database}.${tableName} 
-    (${strkey})
+  INSERT INTO \`${database}\`.\`${tableName}\` 
+    (${columnNames})
     VALUES(
-      ${value}
+      ${values}
     ) ON DUPLICATE KEY UPDATE 
-      ${update}
+      ${updateClauses}
     ;`;
   await GetContent(query);
 }
@@ -158,17 +147,23 @@ export async function Insert(
   tableName: string,
 ) {
   const keylist = Object.keys(content);
-  let value = "";
-  for (let index = 0; index < keylist.length; index++) {
-    const ele = keylist[index];
-    value += typeof ele === "string" ? `"${ele}"` : `${ele}`;
-    if (index !== keylist.length - 1) value += ",\n";
-  }
-  const query = `
-  INSERT INTO ${database}.${tableName}
-    VALUES(
-      ${value}
+  const valuelist = Object.values(content);
+
+  const columnNames = keylist.map((k) => `\`${k}\``).join(",\n    ");
+
+  const values = valuelist
+    .map((ele) =>
+      typeof ele === "string"
+        ? JSON.stringify(ele)
+        : JSON.stringify(ele?.toString()),
     )
-    ;`;
+    .join(",\n      ");
+
+  const query = `
+  INSERT INTO \`${database}\`.\`${tableName}\`
+    (${columnNames})
+    VALUES(
+      ${values}
+    );`;
   await GetContent(query);
 }

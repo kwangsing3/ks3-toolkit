@@ -102,7 +102,7 @@ export async function POST<T>(
 /*
   依照速率阻塞線程。
 */
-export function Sleep(ms: number): Promise<unknown> {
+export function Sleep(ms: number): Promise<void> {
   return new Promise((resolve) => {
     setTimeout(resolve, ms);
   });
@@ -110,36 +110,59 @@ export function Sleep(ms: number): Promise<unknown> {
 
 let waitRateMS = 0;
 let cache = new Date();
-// 一分鐘可接受次數
-export const SetRatePerMin = (ms: number) => {
-  waitRateMS = 60000 / ms;
+
+/**
+ * 設定每分鐘可接受的請求次數
+ * @param requestsPerMinute 每分鐘的請求數
+ */
+export const SetRatePerMin = (requestsPerMinute: number) => {
+  waitRateMS = 60000 / requestsPerMinute;
 };
 
-export const GetRateLimit = () => {
-  const minus = new Date().getMilliseconds() - cache.getMilliseconds();
-
-  return minus <= 0 ? 0 : waitRateMS - minus;
+/**
+ * 取得當前速率限制的等待時間，單位毫秒
+ * @returns 需要等待的毫秒數
+ */
+export const GetRateLimit = (): number => {
+  const now = new Date();
+  const minus = now.getMilliseconds() - cache.getMilliseconds();
+  return minus <= 0 ? 0 : Math.max(0, waitRateMS - minus);
 };
 
 // 錯誤處理函式
-function HandleAxiosError(error: AxiosError) {
+function HandleAxiosError<T>(error: AxiosError): Result<T> {
+  let errorMessage = "Unknown error occurred";
+
   // 伺服器回應的錯誤
   if (error.response) {
-    console.error(`❌ 請求失敗： ${error.config?.url}
-      狀態碼: ${error.response.status}
-      訊息: ${error.response.statusText}
-      資料: ${error.response.status === 404 ? "" : JSON.stringify(error.response.data)}`);
+    errorMessage =
+      `Server error - Status: ${error.response.status} (${error.response.statusText}). ` +
+      `URL: ${error.config?.url}`;
+    if (error.response.status !== 404) {
+      try {
+        const data = JSON.stringify(error.response.data, null, 2);
+        console.error(`❌ Response data:\n${data}`);
+      } catch {
+        console.error(
+          `❌ Response data: ${String(error.response.data)}`,
+        );
+      }
+    }
   } else if (error.request) {
-    console.error("❌ 請求已發送，但未收到回應。"); // 沒有收到回應
+    errorMessage =
+      "No response received from server. The request was made but no response was received.";
   } else {
-    console.error(`❌ 發生錯誤: ${error.message}`); // 發送請求時發生的其他錯誤
+    errorMessage = `Request error: ${error.message}`;
   }
+
+  console.error(`❌ ${errorMessage}`);
+
   return {
     success: false,
-    data: null,
+    data: null as T,
     status: error.response?.status || 0,
-    statusText: error.response?.statusText || "Unknown Error",
+    statusText: error.response?.statusText || "Error",
     headers: error.response?.headers || {},
-    config: error.config as AxiosRequestConfig, // 確保這裡的 config 是 AxiosRequestConfig 類型
+    config: error.config as AxiosRequestConfig,
   };
 }

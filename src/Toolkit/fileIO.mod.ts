@@ -9,7 +9,10 @@ import type { Dirent } from "fs";
  * @param content 檔案內容
  * @throws 如果目錄創建或文件寫入失敗
  */
-export async function WriteFile(targetPath: string, content: string): Promise<void> {
+export async function WriteFile(
+  targetPath: string,
+  content: string,
+): Promise<void> {
   const parentPath = dirname(targetPath);
   await MKDir(parentPath);
   const normalizedPath = join(targetPath);

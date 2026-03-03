@@ -23,24 +23,15 @@ describe("GetArgs function", () => {
     process.argv = ["node", "script.js", "--flag=value", "--mode=production"];
     const args = GetArgs();
 
-    console.assert(
-      args.flag === "value",
-      "flag should be 'value'",
-    );
-    console.assert(
-      args.mode === "production",
-      "mode should be 'production'",
-    );
+    console.assert(args.flag === "value", "flag should be 'value'");
+    console.assert(args.mode === "production", "mode should be 'production'");
   });
 
   test("should handle empty string arguments", () => {
     process.argv = ["node", "script.js", "--empty="];
     const args = GetArgs();
 
-    console.assert(
-      args.empty === "",
-      "empty should be empty string",
-    );
+    console.assert(args.empty === "", "empty should be empty string");
   });
 
   test("should remove quotes from values", () => {
@@ -74,10 +65,7 @@ describe("GetArgs function", () => {
 });
 
 // 簡單的測試運行器
-function describe(
-  name: string,
-  fn: () => void,
-): void {
+function describe(name: string, fn: () => void): void {
   console.log(`\n📋 Test Suite: ${name}`);
   fn();
 }

@@ -31,18 +31,21 @@ const choices = [
     // 1. 決定專案名稱、類型(JS/TS)
     globals.projectname = process.argv.includes("--vscode")
       ? "vscode-genFolder"
-      : await input({ message: "輸入創建的專案名稱 (Enter to use 'genFolder')" });
+      : await input({
+          message: "輸入創建的專案名稱 (Enter to use 'genFolder')",
+        });
 
     globals.projectname =
       globals.projectname.trim() === "" ? "genFolder" : globals.projectname;
 
-    globals.projecttype = (
-      process.env["type"] as "javascript" | "typescript" | undefined ??
+    globals.projecttype = ((process.env["type"] as
+      | "javascript"
+      | "typescript"
+      | undefined) ??
       (await select({
         message: "選擇使用的語言類型",
         choices: choices,
-      }))
-    ) as "javascript" | "typescript";
+      }))) as "javascript" | "typescript";
 
     if (
       globals.projecttype !== "javascript" &&

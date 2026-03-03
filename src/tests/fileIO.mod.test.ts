@@ -44,10 +44,7 @@ describe("FileIO Functions", () => {
     await WriteFile(testFile, "nested content");
 
     const content = await ReadFile(testFile);
-    console.assert(
-      content === "nested content",
-      "Nested file creation failed",
-    );
+    console.assert(content === "nested content", "Nested file creation failed");
   });
 
   test("should handle json files", async () => {
@@ -58,14 +55,8 @@ describe("FileIO Functions", () => {
     const readContent = await ReadFile(jsonFile);
     const parsedData = JSON.parse(readContent);
 
-    console.assert(
-      parsedData.name === "test",
-      "JSON name mismatch",
-    );
-    console.assert(
-      parsedData.value === 42,
-      "JSON value mismatch",
-    );
+    console.assert(parsedData.name === "test", "JSON name mismatch");
+    console.assert(parsedData.value === 42, "JSON value mismatch");
   });
 });
 

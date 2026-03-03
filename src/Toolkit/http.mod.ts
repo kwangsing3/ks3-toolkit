@@ -143,9 +143,7 @@ function HandleAxiosError<T>(error: AxiosError): Result<T> {
         const data = JSON.stringify(error.response.data, null, 2);
         console.error(`❌ Response data:\n${data}`);
       } catch {
-        console.error(
-          `❌ Response data: ${String(error.response.data)}`,
-        );
+        console.error(`❌ Response data: ${String(error.response.data)}`);
       }
     }
   } else if (error.request) {

@@ -1,5 +1,25 @@
 # Changelog
 
+## v2.3.0
+
+[compare changes](https://github.com/kwangsing3/ks3-toolkit/compare/v2.2.7...v2.3.0)
+
+### 💅 Refactors
+
+- 優化代碼質量、修復 bug 並添加單元測試框架 ([66dd268](https://github.com/kwangsing3/ks3-toolkit/commit/66dd268))
+
+### 🏡 Chore
+
+- 升級至 v2.2.7 並改進 TypeScript 配置 ([bb40377](https://github.com/kwangsing3/ks3-toolkit/commit/bb40377))
+
+### 🎨 Styles
+
+- 应用代码格式化标准 ([566216a](https://github.com/kwangsing3/ks3-toolkit/commit/566216a))
+
+### ❤️ Contributors
+
+- Kwangsing3 ([@kwangsing3](https://github.com/kwangsing3))
+
 ## v2.2.7
 
 [compare changes](https://github.com/kwangsing3/ks3-toolkit/compare/v2.2.6...v2.2.7)

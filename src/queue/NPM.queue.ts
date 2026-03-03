@@ -21,7 +21,7 @@ export default async () => {
   packageJSON.name = globals.projectname;
   await writeFileSync(
     join(tarPath, "package.json"),
-    JSON.stringify(packageJSON, null, 4)
+    JSON.stringify(packageJSON, null, 4),
   );
 
   // NPM steps
@@ -45,7 +45,7 @@ export default async () => {
     });
     await WriteFile(
       join(tarPath, "tsconfig.json"),
-      JSON.stringify(TSconfig, null, 4)
+      JSON.stringify(TSconfig, null, 4),
     ).finally(() => {
       console.log(`witefile: ${join(tarPath, "tsconfig.json")}`);
     });
@@ -104,41 +104,35 @@ const JSpackage = {
   description: "",
 };
 const TSconfig = {
-  // Visit https://aka.ms/tsconfig to read more about this file
   compilerOptions: {
-    // File Layout
-    // "rootDir": "./src",
-    // outDir: "./build",
-    // Environment Settings
-    // See also https://aka.ms/tsconfig/module
-    types: [],
-    // For nodejs:
-    // "lib": ["esnext"],
-    // "types": ["node"],
-    // and npm install -D @types/node
-    // Other Outputs
-    sourceMap: true,
-    declaration: true,
-    declarationMap: true,
-    // Stricter Typechecking Options
-    noUncheckedIndexedAccess: true,
-    exactOptionalPropertyTypes: true,
-    // Style Options
-    // "noImplicitReturns": true,
-    // "noImplicitOverride": true,
-    // "noUnusedLocals": true,
-    // "noUnusedParameters": true,
-    // "noFallthroughCasesInSwitch": true,
-    // "noPropertyAccessFromIndexSignature": true,
-    // Recommended Options
-    strict: true,
-    verbatimModuleSyntax: true,
-    isolatedModules: true,
-    noUncheckedSideEffectImports: true,
-    moduleDetection: "force",
-    skipLibCheck: true,
-    allowImportingTsExtensions: true,
-    noEmit: true,
-    forceConsistentCasingInFileNames: true,
+    /* 語言與環境 */
+    target: "ES2022" /* 編譯到最新的 ES 標準 */,
+    module: "NodeNext" /* 使用 Node.js 的 ESM 模組系統 */,
+    moduleResolution: "NodeNext" /* Node.js 的模組解析策略 */,
+    /* 輸出設定 */
+    outDir: "build" /* 編譯輸出目錄 */,
+    rootDir: "./src" /* 原始碼目錄 */,
+    sourceMap: true /* 生成 source map 方便調試 */,
+    declaration: true /* 生成 .d.ts 型別定義檔 */,
+    declarationMap: true /* 生成 declaration source map */,
+    /* 互通性約束 */
+    esModuleInterop: true /* 啟用 ES 模組互通性 */,
+    allowSyntheticDefaultImports: true /* 允許從沒有預設匯出的模組預設匯入 */,
+    forceConsistentCasingInFileNames: true /* 強制檔案名稱大小寫一致 */,
+    isolatedModules: true /* 確保每個檔案可以獨立編譯 */,
+    /* 型別檢查 */
+    strict: true /* 啟用所有嚴格的型別檢查選項 */,
+    noUnusedLocals: true /* 檢查未使用的局部變數 */,
+    noUnusedParameters: true /* 檢查未使用的參數 */,
+    noImplicitReturns: true /* 檢查函式是否所有路徑都有回傳值 */,
+    noFallthroughCasesInSwitch: true /* 檢查 switch 語句的 fall-through */,
+    noUncheckedIndexedAccess: true /* 索引存取時包含 undefined 檢查 */,
+    allowUnusedLabels: false /* 不允許未使用的標籤 */,
+    allowUnreachableCode: false /* 不允許無法執行的程式碼 */,
+    /* 其他 */
+    skipLibCheck: true /* 跳過 .d.ts 檔案的型別檢查以加速編譯 */,
+    resolveJsonModule: true /* 允許匯入 JSON 模組 */,
   },
+  include: ["src/**/*"],
+  exclude: ["node_modules", "build"],
 };

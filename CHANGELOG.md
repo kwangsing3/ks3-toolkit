@@ -1,5 +1,17 @@
 # Changelog
 
+## v2.4.1
+
+[compare changes](https://github.com/kwangsing3/ks3-toolkit/compare/v2.4.0...v2.4.1)
+
+### 🏡 Chore
+
+- Prepare patch release ([7acfeb8](https://github.com/kwangsing3/ks3-toolkit/commit/7acfeb8))
+
+### ❤️ Contributors
+
+- Jon_Chiu <Jon_Chiu@genesis.com.tw>
+
 ## v2.4.0
 
 [compare changes](https://github.com/kwangsing3/ks3-toolkit/compare/v2.3.0...v2.4.0)

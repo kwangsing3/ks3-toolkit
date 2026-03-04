@@ -1,5 +1,21 @@
 # Changelog
 
+## v2.4.4
+
+[compare changes](https://github.com/kwangsing3/ks3-toolkit/compare/v2.4.3...v2.4.4)
+
+### 📦 Build
+
+- Output compiled files to build/src ([fe26abd](https://github.com/kwangsing3/ks3-toolkit/commit/fe26abd))
+
+### 🏡 Chore
+
+- Trigger patch release ([c8a6cd7](https://github.com/kwangsing3/ks3-toolkit/commit/c8a6cd7))
+
+### ❤️ Contributors
+
+- Jon_Chiu <Jon_Chiu@genesis.com.tw>
+
 ## v2.4.3
 
 [compare changes](https://github.com/kwangsing3/ks3-toolkit/compare/v2.4.2...v2.4.3)

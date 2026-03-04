@@ -23,6 +23,12 @@ jobs:
           node-version: "20"
           registry-url: "https://registry.npmjs.org/"
 
+      - name: Upgrade npm
+        run: |
+          npm install -g npm@latest
+          echo "Node version: $(node --version)"
+          echo "npm version: $(npm --version)"
+
       - name: Remove publishConfig from package.json
         run: |
           jq 'del(.publishConfig)' package.json > temp.json && mv temp.json package.json

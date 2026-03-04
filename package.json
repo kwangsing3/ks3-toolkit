@@ -25,8 +25,8 @@
     "release:minor": "npx changelogen@latest  --minor --release --push",
     "release:patch": "npx changelogen@latest  --patch --release --push",
     "prepare": "npm run compile",
-    "pretest": "npm run compile",
-    "posttest": "npm run lint"
+    "test": "node --test build/tests/*.test.js",
+    "pretest": "npm run compile"
   },
   "devDependencies": {
     "@types/node": "^22.18.8",

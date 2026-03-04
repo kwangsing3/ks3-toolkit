@@ -9,6 +9,33 @@ import { rm } from "fs/promises";
 
 const testDir = join(process.cwd(), ".test-temp");
 
+let testCounter = 0;
+
+function describe(name: string, fn: () => void): void {
+  console.log(`\n📋 Test Suite: ${name}`);
+  fn();
+}
+
+function before(_fn: () => Promise<void>): void {
+  // Setup
+}
+
+function after(_fn: () => Promise<void>): void {
+  // Teardown
+}
+
+function test(name: string, fn: () => Promise<void>): void {
+  testCounter++;
+  fn()
+    .then(() => {
+      console.log(`✅ Test ${testCounter}: ${name}`);
+    })
+    .catch((error) => {
+      console.error(`❌ Test ${testCounter}: ${name}`);
+      console.error(error);
+    });
+}
+
 before(async () => {
   console.log("🔧 Setting up test environment...");
   await MKDir(testDir);
@@ -59,30 +86,3 @@ describe("FileIO Functions", () => {
     console.assert(parsedData.value === 42, "JSON value mismatch");
   });
 });
-
-let testCounter = 0;
-
-function describe(name: string, fn: () => void): void {
-  console.log(`\n📋 Test Suite: ${name}`);
-  fn();
-}
-
-function before(_fn: () => Promise<void>): void {
-  // Setup
-}
-
-function after(_fn: () => Promise<void>): void {
-  // Teardown
-}
-
-function test(name: string, fn: () => Promise<void>): void {
-  testCounter++;
-  fn()
-    .then(() => {
-      console.log(`✅ Test ${testCounter}: ${name}`);
-    })
-    .catch((error) => {
-      console.error(`❌ Test ${testCounter}: ${name}`);
-      console.error(error);
-    });
-}

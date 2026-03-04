@@ -5,6 +5,24 @@ import "../Toolkit/date.func.js";
  * Run: node --test build/tests/date.func.test.js
  */
 
+let testCounter = 0;
+
+function describe(name: string, fn: () => void): void {
+  console.log(`\n📋 Test Suite: ${name}`);
+  fn();
+}
+
+function test(name: string, fn: () => void): void {
+  testCounter++;
+  try {
+    fn();
+    console.log(`✅ Test ${testCounter}: ${name}`);
+  } catch (error) {
+    console.error(`❌ Test ${testCounter}: ${name}`);
+    console.error(error);
+  }
+}
+
 describe("Date extension functions", () => {
   test("should convert Date to DateTime format", () => {
     const date = new Date("2025-01-27T11:01:39.123Z");
@@ -56,21 +74,3 @@ describe("Date extension functions", () => {
     );
   });
 });
-
-let testCounter = 0;
-
-function describe(name: string, fn: () => void): void {
-  console.log(`\n📋 Test Suite: ${name}`);
-  fn();
-}
-
-function test(name: string, fn: () => void): void {
-  testCounter++;
-  try {
-    fn();
-    console.log(`✅ Test ${testCounter}: ${name}`);
-  } catch (error) {
-    console.error(`❌ Test ${testCounter}: ${name}`);
-    console.error(error);
-  }
-}

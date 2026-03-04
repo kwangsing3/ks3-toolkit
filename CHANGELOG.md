@@ -1,5 +1,17 @@
 # Changelog
 
+## v2.4.2
+
+[compare changes](https://github.com/kwangsing3/ks3-toolkit/compare/v2.4.1...v2.4.2)
+
+### 🤖 CI
+
+- Upgrade npm in publish workflow ([a0ccba9](https://github.com/kwangsing3/ks3-toolkit/commit/a0ccba9))
+
+### ❤️ Contributors
+
+- Jon_Chiu <Jon_Chiu@genesis.com.tw>
+
 ## v2.4.1
 
 [compare changes](https://github.com/kwangsing3/ks3-toolkit/compare/v2.4.0...v2.4.1)

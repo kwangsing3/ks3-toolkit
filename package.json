@@ -18,8 +18,8 @@
   "keywords": [],
   "type": "module",
   "scripts": {
-    "build": "tsc",
-    "compile": "tsc",
+    "build": "tsc && node scripts/copy-data-dotfiles.mjs",
+    "compile": "tsc && node scripts/copy-data-dotfiles.mjs",
     "launch": "ks3-toolkit",
     "release:major": "npx changelogen@latest  --major --release --push",
     "release:minor": "npx changelogen@latest  --minor --release --push",

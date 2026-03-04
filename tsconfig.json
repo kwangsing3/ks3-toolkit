@@ -29,7 +29,8 @@
     "resolveJsonModule": true /* 允許匯入 JSON 模組 */
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "src/**/.*"
   ],
   "exclude": [
     "node_modules",

@@ -7,7 +7,7 @@ const __dirname = path.dirname(__filename);
 const projectRoot = path.resolve(__dirname, "..");
 
 const sourceRoot = path.join(projectRoot, "src", "data");
-const targetRoot = path.join(projectRoot, "build", "data");
+const targetRoot = path.join(projectRoot, "build", "src", "data");
 
 async function collectDotfiles(directory, rootDirectory = directory) {
   const entries = await readdir(directory, { withFileTypes: true });
@@ -44,7 +44,7 @@ async function main() {
   );
 
   console.log(
-    `Copied ${dotfiles.length} dotfile(s) from src/data to build/data.`,
+    `Copied ${dotfiles.length} dotfile(s) from src/data to build/src/data.`,
   );
 }
 

@@ -5,7 +5,7 @@
     "module": "NodeNext", /* 使用 Node.js 的 ESM 模組系統 */
     "moduleResolution": "NodeNext", /* Node.js 的模組解析策略 */
     /* 輸出設定 */
-    "outDir": "build", /* 編譯輸出目錄 */
+    "outDir": "build/src", /* 編譯輸出目錄 */
     "rootDir": "./src", /* 原始碼目錄 */
     "sourceMap": true, /* 生成 source map 方便調試 */
     "declaration": true, /* 生成 .d.ts 型別定義檔 */

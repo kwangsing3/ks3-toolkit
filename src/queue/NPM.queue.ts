@@ -5,7 +5,6 @@ import { WriteFile } from "../Toolkit/fileIO.mod.js";
 import globals from "../globals.js";
 
 const steps = [
-  "npm install axios@latest",
   "npm install xml2js@latest",
   "npm install --save-dev @types/xml2js",
   "npm install iconv-lite@latest",

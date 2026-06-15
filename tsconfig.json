@@ -1,36 +1,45 @@
 {
   "compilerOptions": {
     /* 語言與環境 */
-    "target": "ES2022", /* 編譯到最新的 ES 標準 */
-    "module": "NodeNext", /* 使用 Node.js 的 ESM 模組系統 */
-    "moduleResolution": "NodeNext", /* Node.js 的模組解析策略 */
+    "target": "ES2023", /* Node 20+ 支援 ES2023；Node 22+ 可改 ES2024 */
+    "module": "NodeNext", /* Node.js ESM 模組系統 */
+    "moduleResolution": "NodeNext", /* Node.js 模組解析策略（後端專案勿改 Bundler） */
+    "lib": [
+      "ES2023"
+    ], /* 明確指定標準函式庫，後端不需要 DOM */
     /* 輸出設定 */
-    "outDir": "build/src", /* 編譯輸出目錄 */
-    "rootDir": "./src", /* 原始碼目錄 */
-    "sourceMap": true, /* 生成 source map 方便調試 */
-    "declaration": true, /* 生成 .d.ts 型別定義檔 */
-    "declarationMap": true, /* 生成 declaration source map */
+    "outDir": "./build",
+    "rootDir": "./src",
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+    /* 編譯效能 */
+    "incremental": true, /* 啟用增量編譯，加速 tsc 後續執行 */
+    "tsBuildInfoFile": "./build/tsconfig.tsbuildinfo", /* 狀態檔放進 build/，與產物同生死，避免刪 build 後 tsc 空轉不 emit */
     /* 互通性約束 */
-    "esModuleInterop": true, /* 啟用 ES 模組互通性 */
-    "allowSyntheticDefaultImports": true, /* 允許從沒有預設匯出的模組預設匯入 */
-    "forceConsistentCasingInFileNames": true, /* 強制檔案名稱大小寫一致 */
-    "isolatedModules": true, /* 確保每個檔案可以獨立編譯 */
+    "esModuleInterop": true, /* 已隱含 allowSyntheticDefaultImports，不需重複設定 */
+    "forceConsistentCasingInFileNames": true,
+    "verbatimModuleSyntax": true, /* TS 5.0+：取代 isolatedModules，強制正確使用 import type */
     /* 型別檢查 */
-    "strict": true, /* 啟用所有嚴格的型別檢查選項 */
-    "noUnusedLocals": true, /* 檢查未使用的局部變數 */
-    "noUnusedParameters": true, /* 檢查未使用的參數 */
-    "noImplicitReturns": true, /* 檢查函式是否所有路徑都有回傳值 */
-    "noFallthroughCasesInSwitch": true, /* 檢查 switch 語句的 fall-through */
-    "noUncheckedIndexedAccess": true, /* 索引存取時包含 undefined 檢查 */
-    "allowUnusedLabels": false, /* 不允許未使用的標籤 */
-    "allowUnreachableCode": false, /* 不允許無法執行的程式碼 */
+    "strict": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "allowUnusedLabels": false,
+    "allowUnreachableCode": false,
+    "exactOptionalPropertyTypes": true, /* 嚴格區分 undefined 與「屬性不存在」*/
+    "noPropertyAccessFromIndexSignature": true, /* 強制用 [] 存取 index signature */
     /* 其他 */
-    "skipLibCheck": true, /* 跳過 .d.ts 檔案的型別檢查以加速編譯 */
-    "resolveJsonModule": true /* 允許匯入 JSON 模組 */
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "types": [
+      "node"
+    ]
   },
   "include": [
     "src/**/*",
-    "src/**/.*"
   ],
   "exclude": [
     "node_modules",

@@ -1,5 +1,17 @@
 # Changelog
 
+## v2.5.0
+
+[compare changes](https://github.com/kwangsing3/ks3-toolkit/compare/v2.4.4...v2.5.0)
+
+### 💅 Refactors
+
+- **http:** Replace axios with native fetch and add PUT/DELETE/PATCH ([a3f4e75](https://github.com/kwangsing3/ks3-toolkit/commit/a3f4e75))
+
+### ❤️ Contributors
+
+- Jon_Chiu <Jon_Chiu@genesis.com.tw>
+
 ## v2.4.4
 
 [compare changes](https://github.com/kwangsing3/ks3-toolkit/compare/v2.4.3...v2.4.4)
